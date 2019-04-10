@@ -8,12 +8,38 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Egg extends Mover
 {
+    private int healthValue;
+    private int frames;
+    private boolean isRemoved;
     /**
-     * Act - do whatever the Egg wants to do. This method is called whenever
+     * Constructor 
+     * 
+     */
+    public Egg() 
+    {
+        healthValue = 5;
+        isRemoved = false;
+    }    
+    
+    /**
+     * Act - do whatever the Egg wants to do. 
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+       moveDown();
+       
+      
+       
+    }
+    
+    /**
+     * Act- move down
+     */
+    public void moveDown()
+    {
+        turn(90);
+        turn(5);
+        turn(-90);
+    }
 }

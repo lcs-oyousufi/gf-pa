@@ -1,19 +1,45 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
 
 /**
- * Write a description of class lightning here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
  */
-public class lightning extends Mover
+public class Lightning extends Mover
 {
-    /**
-     * Act - do whatever the lightning wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    /** A bullet looses one life each act, and will disappear when life = 0 */
+    private int life = 30;
+    
+    /** The damage this bullet will deal */
+    private int damage = 16;
+    
+    public Lightning()
     {
-        // Add your action code here.
-    }    
+    }
+    
+    public Lightning(Vector speed, int rotation)
+    {
+        super(speed);
+        setRotation(rotation);
+        increaseSpeed(new Vector(rotation, 15));
+        Greenfoot.playSound("EnergyGun.wav");
+    }
+    
+    /**
+     * The bullet will damage asteroids if it hits them.
+     */
+    public void act()
+    {
+        if(life <= 0) {
+            getWorld().removeObject(this);
+        } 
+        else {
+            move();
+            Asteroid asteroid = (Asteroid) getOneIntersectingObject(Asteroid.class);
+            if (asteroid != null) {
+                getWorld().removeObject(this);
+                asteroid.hit(damage);
+            }
+            else {
+                life--;
+            }
+        }
+    }
 }

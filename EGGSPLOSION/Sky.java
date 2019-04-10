@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
 
 public class Sky extends World
 {
+    private static int frames = 0;
+    
     /**
      * Create the space world with black background and stars.
      */
@@ -12,21 +14,26 @@ public class Sky extends World
         GreenfootImage background = getBackground();
         background.setColor(Color.BLUE);
         background.fill();
-        createStars(300);
+        
        
     }
     
-    /**
-     * Create some random stars in the world
-     */
-    private void createStars(int number) 
+    
+    public void act() 
     {
-        GreenfootImage background = getBackground();             
-        for (int i=0; i < number; i++) {            
-             int x = Greenfoot.getRandomNumber( getWidth() );
-             int y = Greenfoot.getRandomNumber( getHeight() );
-             int color = 150 - Greenfoot.getRandomNumber(120);
-             background.setColorAt(x, y, new Color(color,color,color));
+        dropEgg();
+        
+        
+        //add some frames
+        frames = frames + 1;
+        }
+        
+    private void dropEgg()
+    {
+        if (frames % 100 == 0) 
+        {
+            addObject(new Egg(), Greenfoot.getRandomNumber(800),0);
         }
     }
-}
+    }
+
