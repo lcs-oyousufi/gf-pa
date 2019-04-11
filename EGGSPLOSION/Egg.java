@@ -36,10 +36,19 @@ public class Egg extends Mover
     /**
      * Act- move down
      */
-    public void moveDown()
+    private void moveDown()
     {
         turn(90);
         turn(5);
         turn(-90);
+    }
+    
+    private void Removal()
+    {
+        if (isAtEdge())
+        {
+            Sky world = (Sky) getWorld();
+            world.removeObject(this);
+        }
     }
 }

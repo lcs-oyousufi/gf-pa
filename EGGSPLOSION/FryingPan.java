@@ -14,6 +14,19 @@ public class FryingPan extends Mover
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+        move();
+        
+    }   
+    
+    private void move()
+    {
+        if (Greenfoot.isKeyDown("Right"))
+        {
+            move(5);
+        }
+        if (Greenfoot.isKeyDown("Left"))
+        {
+            move(-5);
+        }
+    }
 }

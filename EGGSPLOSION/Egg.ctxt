@@ -10,4 +10,6 @@ comment2.text=\n\ Act\ -\ do\ whatever\ the\ Egg\ wants\ to\ do.\ \n\ the\ 'Act'
 comment3.params=
 comment3.target=void\ moveDown()
 comment3.text=\n\ Act-\ move\ down\n
-numComments=4
+comment4.params=
+comment4.target=void\ Removal()
+numComments=5
